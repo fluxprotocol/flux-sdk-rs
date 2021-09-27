@@ -1,5 +1,5 @@
 [package]
-name = "flux-sdk-rs"
+name = "flux-sdk"
 version = "0.1.0"
 authors = ["Flux Contributors <contributors@flux.xyz>"]
 edition = "2018"

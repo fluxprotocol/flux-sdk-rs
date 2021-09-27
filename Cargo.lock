@@ -164,7 +164,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "flux-sdk-rs"
+name = "flux-sdk"
 version = "0.1.0"
 dependencies = [
  "near-sdk",
