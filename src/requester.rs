@@ -24,7 +24,7 @@ pub enum RequestStatus {
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
 pub struct Requester {
     pub contract_name: String,
-    pub account_id: AccountId, // Change to account_id
+    pub account_id: AccountId,
     pub stake_multiplier: Option<u16>, 
     pub code_base_url: Option<String>
 }
