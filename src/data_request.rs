@@ -11,13 +11,12 @@ use crate::resolution_window::{ ResolutionWindow, ResolutionWindowSummary };
 /// The arguments sent in `msg` on `ft_transfer_call()` from Requester to oracle while creating a new data request
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
 pub struct NewDataRequestArgs {
-    pub sources: Vec<Source>,
+    pub sources: Option<Vec<Source>>,
     pub tags: Vec<String>,
     pub description: Option<String>,
     pub outcomes: Option<Vec<String>>,
     pub challenge_period: WrappedTimestamp,
     pub data_type: DataRequestDataType,
-    pub creator: AccountId,
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Clone)]
