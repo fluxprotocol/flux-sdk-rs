@@ -64,10 +64,10 @@ pub struct DataRequest {
 
 #[derive(BorshSerialize, BorshDeserialize)]
 pub struct DataRequestConfig {
-    default_challenge_window_duration: Duration,
-    final_arbitrator_invoke_amount: Balance,
-    final_arbitrator: AccountId,
-    validity_bond: Balance,
+    pub default_challenge_window_duration: Duration,
+    pub final_arbitrator_invoke_amount: Balance,
+    pub final_arbitrator: AccountId,
+    pub validity_bond: Balance,
     pub paid_fee: Balance,
     pub stake_multiplier: Option<u16>,
 }
