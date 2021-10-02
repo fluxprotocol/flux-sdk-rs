@@ -52,7 +52,6 @@ pub struct DataRequest {
     pub sources: Vec<Source>,
     pub outcomes: Option<Vec<String>>,
     pub requester: Requester, // Requester contract
-    pub creator: AccountId, // Account to return the validity bond to
     pub finalized_outcome: Option<Outcome>,
     pub resolution_windows: Vector<ResolutionWindow>,
     pub global_config_id: u64, // Config id
@@ -82,7 +81,6 @@ pub struct DataRequestSummary {
     pub outcomes: Option<Vec<String>>,
     pub requester: Requester,
     pub request_config: DataRequestConfigSummary,
-    pub creator: AccountId,
     pub finalized_outcome: Option<Outcome>,
     pub resolution_windows: Vec<ResolutionWindowSummary>,
     pub global_config_id: U64,
