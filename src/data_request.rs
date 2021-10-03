@@ -1,12 +1,17 @@
-use near_sdk::borsh::{ self, BorshDeserialize, BorshSerialize };
-use near_sdk::serde::{ Deserialize, Serialize };
-use near_sdk::{ AccountId, Balance };
-use near_sdk::json_types::{ U64, U128 };
-use near_sdk::collections::Vector;
-use crate::types::{ Duration, WrappedBalance, WrappedTimestamp };
-use crate::outcome::Outcome;
-use crate::requester::Requester;
-use crate::resolution_window::{ ResolutionWindow, ResolutionWindowSummary };
+use near_sdk::{
+    borsh::{ self, BorshDeserialize, BorshSerialize },
+    serde::{ Deserialize, Serialize },
+    json_types::{ U64, U128 },
+    AccountId,
+    Balance,
+    collections::Vector
+};
+use crate::{
+    types::{ Duration, WrappedBalance, WrappedTimestamp },
+    outcome::Outcome,
+    requester::Requester,
+    resolution_window::{ ResolutionWindow, ResolutionWindowSummary }
+};
 
 /// The arguments sent in `msg` on `ft_transfer_call()` from Requester to oracle while creating a new data request
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]

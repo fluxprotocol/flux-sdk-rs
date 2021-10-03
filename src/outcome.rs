@@ -1,6 +1,8 @@
-use near_sdk::json_types::U128;
-use near_sdk::serde::{ Deserialize, Serialize };
-use near_sdk::borsh::{ self, BorshDeserialize, BorshSerialize };
+use near_sdk::{
+    serde::{ Deserialize, Serialize },
+    borsh::{ self, BorshDeserialize, BorshSerialize },
+    json_types::U128
+};
 
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Debug, PartialEq, Clone)]
 pub enum Outcome {

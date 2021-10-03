@@ -1,9 +1,13 @@
-use near_sdk::serde::{ Deserialize, Serialize };
-use near_sdk::borsh::{ self, BorshDeserialize, BorshSerialize };
-use near_sdk::AccountId;
-use crate::outcome::Outcome;
-use crate::types::WrappedBalance;
-use crate::data_request::NewDataRequestArgs;
+use near_sdk::{
+    serde::{ Deserialize, Serialize },
+    borsh::{ self, BorshDeserialize, BorshSerialize },
+    AccountId
+};
+use crate::{
+    outcome::Outcome,
+    types::WrappedBalance,
+    data_request::NewDataRequestArgs
+};
 
 /// Used on sample Requester contract to keep track of created data requests
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize)]

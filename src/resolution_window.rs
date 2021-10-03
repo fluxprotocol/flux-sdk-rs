@@ -1,9 +1,14 @@
-use near_sdk::borsh::{ self, BorshDeserialize, BorshSerialize };
-use near_sdk::serde::{ Deserialize, Serialize };
-use near_sdk::{ Balance, AccountId };
-use near_sdk::collections::{ LookupMap };
-use crate::outcome::Outcome;
-use crate::types::{ Timestamp, WrappedBalance, WrappedTimestamp };
+use near_sdk::{
+    borsh::{ self, BorshDeserialize, BorshSerialize },
+    serde::{ Deserialize, Serialize },
+    collections::LookupMap,
+    Balance,
+    AccountId
+};
+use crate::{
+    outcome::Outcome,
+    types::{ Timestamp, WrappedBalance, WrappedTimestamp }
+};
 
 /// Used in the oracle to store all information associated with a resolution window within a data request
 #[derive(BorshSerialize, BorshDeserialize)]

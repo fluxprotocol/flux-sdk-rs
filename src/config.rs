@@ -1,7 +1,9 @@
-use near_sdk::borsh::{ self, BorshDeserialize, BorshSerialize };
-use near_sdk::serde::{ Serialize, Deserialize };
-use near_sdk::AccountId;
-use near_sdk::json_types::U128;
+use near_sdk::{
+    borsh::{ self, BorshDeserialize, BorshSerialize },
+    serde::{ Serialize, Deserialize },
+    json_types::U128,
+    AccountId
+};
 use crate::types::WrappedTimestamp;
 
 /// Used on oracle to store global configuration
