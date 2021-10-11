@@ -49,9 +49,14 @@ pub struct ClaimRes {
     pub stake_token_payout: u128
 }
 
+pub enum DataRequestStatus {
+    Active(ActiveDataRequest),
+    Finalized(FinalizedDataRequest)
+}
+
 /// Used in the oracle to store all information associated with a data request
 #[derive(BorshSerialize, BorshDeserialize)]
-pub struct DataRequest {
+pub struct ActiveDataRequest {
     pub id: u64,
     pub description: Option<String>,
     pub sources: Vec<Source>,
@@ -65,6 +70,15 @@ pub struct DataRequest {
     pub final_arbitrator_triggered: bool,
     pub tags: Vec<String>,
     pub data_type: DataRequestDataType,
+}
+
+#[derive(BorshSerialize, BorshDeserialize)]
+pub struct FinalizedDataRequest{
+    pub id: u64,
+    pub finalized_outcome: Outcome,
+    pub resolution_windows: Vector<ResolutionWindow>,
+    pub global_config_id: u64, // Config id
+    pub paid_fee: u128,
 }
 
 #[derive(BorshSerialize, BorshDeserialize)]
