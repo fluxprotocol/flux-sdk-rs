@@ -49,7 +49,7 @@ pub struct ClaimRes {
     pub stake_token_payout: u128
 }
 
-pub enum DataRequestStatus {
+pub enum DataRequest {
     Active(ActiveDataRequest),
     Finalized(FinalizedDataRequest)
 }
