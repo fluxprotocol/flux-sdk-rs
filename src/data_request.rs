@@ -49,6 +49,7 @@ pub struct ClaimRes {
     pub stake_token_payout: u128
 }
 
+#[derive(BorshSerialize, BorshDeserialize)]
 pub enum DataRequest {
     Active(ActiveDataRequest),
     Finalized(FinalizedDataRequest)
