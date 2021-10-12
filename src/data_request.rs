@@ -98,7 +98,6 @@ pub struct FinalizedDataRequestSummary {
     pub finalized_outcome: Outcome,
     pub resolution_windows: Vec<ResolutionWindowSummary>,
     pub global_config_id: U64,
-    pub final_arbitrator_triggered: bool,
     pub paid_fee: U128
 }
 
