@@ -91,16 +91,6 @@ pub struct DataRequestConfig {
     pub stake_multiplier: Option<u16>,
 }
 
-#[derive(BorshSerialize, BorshDeserialize)]
-pub struct FinalizedDataRequest{
-    pub id: u64,
-    pub finalized_outcome: Outcome,
-    pub resolution_windows: Vector<ResolutionWindow>,
-    pub global_config_id: u64, // Config id
-    pub paid_fee: u128,
-}
-
-
 /// Used on the oracle in `summarize_dr()` to return summary information about a data request
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
 pub struct FinalizedDataRequestSummary {
