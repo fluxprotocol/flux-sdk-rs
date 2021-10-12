@@ -91,6 +91,12 @@ pub struct DataRequestConfig {
     pub stake_multiplier: Option<u16>,
 }
 
+#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
+pub enum DataRequestSummary {
+    Active(ActiveDataRequestSummary),
+    Finalized(FinalizedDataRequestSummary)
+}
+
 /// Used on the oracle in `summarize_dr()` to return summary information about a data request
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
 pub struct FinalizedDataRequestSummary {
