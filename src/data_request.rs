@@ -49,15 +49,20 @@ pub struct ClaimRes {
     pub stake_token_payout: u128
 }
 
+#[derive(BorshSerialize, BorshDeserialize)]
+pub enum DataRequest {
+    Active(ActiveDataRequest),
+    Finalized(FinalizedDataRequest)
+}
+
 /// Used in the oracle to store all information associated with a data request
 #[derive(BorshSerialize, BorshDeserialize)]
-pub struct DataRequest {
+pub struct ActiveDataRequest {
     pub id: u64,
     pub description: Option<String>,
     pub sources: Vec<Source>,
     pub outcomes: Option<Vec<String>>,
     pub requester: Requester, // Requester contract
-    pub finalized_outcome: Option<Outcome>,
     pub resolution_windows: Vector<ResolutionWindow>,
     pub global_config_id: u64, // Config id
     pub request_config: DataRequestConfig,
@@ -65,6 +70,15 @@ pub struct DataRequest {
     pub final_arbitrator_triggered: bool,
     pub tags: Vec<String>,
     pub data_type: DataRequestDataType,
+}
+
+#[derive(BorshSerialize, BorshDeserialize)]
+pub struct FinalizedDataRequest{
+    pub id: u64,
+    pub finalized_outcome: Outcome,
+    pub resolution_windows: Vector<ResolutionWindow>,
+    pub global_config_id: u64, // Config id
+    pub paid_fee: u128,
 }
 
 #[derive(BorshSerialize, BorshDeserialize)]
@@ -77,16 +91,31 @@ pub struct DataRequestConfig {
     pub stake_multiplier: Option<u16>,
 }
 
+#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
+pub enum DataRequestSummary {
+    Active(ActiveDataRequestSummary),
+    Finalized(FinalizedDataRequestSummary)
+}
+
 /// Used on the oracle in `summarize_dr()` to return summary information about a data request
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
-pub struct DataRequestSummary {
-    pub id: u64,
+pub struct FinalizedDataRequestSummary {
+    pub id: U64,
+    pub finalized_outcome: Outcome,
+    pub resolution_windows: Vec<ResolutionWindowSummary>,
+    pub global_config_id: U64,
+    pub paid_fee: U128
+}
+
+/// Used on the oracle in `summarize_dr()` to return summary information about a data request
+#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
+pub struct ActiveDataRequestSummary {
+    pub id: U64,
     pub description: Option<String>,
     pub sources: Vec<Source>,
     pub outcomes: Option<Vec<String>>,
     pub requester: Requester,
     pub request_config: DataRequestConfigSummary,
-    pub finalized_outcome: Option<Outcome>,
     pub resolution_windows: Vec<ResolutionWindowSummary>,
     pub global_config_id: U64,
     pub initial_challenge_period: U64,
