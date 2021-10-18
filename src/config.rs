@@ -1,10 +1,10 @@
-use near_sdk::{
-    borsh::{ self, BorshDeserialize, BorshSerialize },
-    serde::{ Serialize, Deserialize },
-    json_types::U128,
-    AccountId
-};
 use crate::types::WrappedTimestamp;
+use near_sdk::{
+    borsh::{self, BorshDeserialize, BorshSerialize},
+    json_types::U128,
+    serde::{Deserialize, Serialize},
+    AccountId,
+};
 
 /// Used on oracle to store global configuration
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]

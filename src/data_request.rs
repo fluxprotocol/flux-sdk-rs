@@ -1,16 +1,15 @@
-use near_sdk::{
-    borsh::{ self, BorshDeserialize, BorshSerialize },
-    serde::{ Deserialize, Serialize },
-    json_types::{ U64, U128 },
-    AccountId,
-    Balance,
-    collections::Vector
-};
 use crate::{
-    types::{ Duration, WrappedBalance, WrappedTimestamp },
     outcome::Outcome,
     requester::Requester,
-    resolution_window::{ ResolutionWindow, ResolutionWindowSummary }
+    resolution_window::{ResolutionWindow, ResolutionWindowSummary},
+    types::{Duration, WrappedBalance, WrappedTimestamp},
+};
+use near_sdk::{
+    borsh::{self, BorshDeserialize, BorshSerialize},
+    collections::Vector,
+    json_types::{U128, U64},
+    serde::{Deserialize, Serialize},
+    AccountId, Balance,
 };
 
 /// The arguments sent in `msg` on `ft_transfer_call()` from Requester to oracle while creating a new data request
@@ -27,7 +26,7 @@ pub struct NewDataRequestArgs {
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Clone)]
 pub struct Source {
     pub end_point: String,
-    pub source_path: String
+    pub source_path: String,
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Debug, PartialEq, Clone)]
@@ -40,19 +39,19 @@ pub enum DataRequestDataType {
 #[derive(Serialize, Deserialize)]
 pub struct StakeDataRequestArgs {
     pub id: U64,
-    pub outcome: Outcome
+    pub outcome: Outcome,
 }
 
 /// Used on the oracle in `claim()` to return token payouts
 pub struct ClaimRes {
     pub payment_token_payout: u128,
-    pub stake_token_payout: u128
+    pub stake_token_payout: u128,
 }
 
 #[derive(BorshSerialize, BorshDeserialize)]
 pub enum DataRequest {
     Active(ActiveDataRequest),
-    Finalized(FinalizedDataRequest)
+    Finalized(FinalizedDataRequest),
 }
 
 /// Used in the oracle to store all information associated with a data request
@@ -73,7 +72,7 @@ pub struct ActiveDataRequest {
 }
 
 #[derive(BorshSerialize, BorshDeserialize)]
-pub struct FinalizedDataRequest{
+pub struct FinalizedDataRequest {
     pub id: u64,
     pub finalized_outcome: Outcome,
     pub resolution_windows: Vector<ResolutionWindow>,
@@ -94,7 +93,7 @@ pub struct DataRequestConfig {
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
 pub enum DataRequestSummary {
     Active(ActiveDataRequestSummary),
-    Finalized(FinalizedDataRequestSummary)
+    Finalized(FinalizedDataRequestSummary),
 }
 
 /// Used on the oracle in `summarize_dr()` to return summary information about a data request
@@ -104,7 +103,7 @@ pub struct FinalizedDataRequestSummary {
     pub finalized_outcome: Outcome,
     pub resolution_windows: Vec<ResolutionWindowSummary>,
     pub global_config_id: U64,
-    pub paid_fee: U128
+    pub paid_fee: U128,
 }
 
 /// Used on the oracle in `summarize_dr()` to return summary information about a data request

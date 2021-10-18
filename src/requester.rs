@@ -1,12 +1,8 @@
+use crate::{data_request::NewDataRequestArgs, outcome::Outcome, types::WrappedBalance};
 use near_sdk::{
-    serde::{ Deserialize, Serialize },
-    borsh::{ self, BorshDeserialize, BorshSerialize },
-    AccountId
-};
-use crate::{
-    outcome::Outcome,
-    types::WrappedBalance,
-    data_request::NewDataRequestArgs
+    borsh::{self, BorshDeserialize, BorshSerialize},
+    serde::{Deserialize, Serialize},
+    AccountId,
 };
 
 /// Used on sample Requester contract to keep track of created data requests
@@ -23,7 +19,7 @@ pub struct DataRequestDetails {
 #[derive(BorshSerialize, BorshDeserialize, Debug, PartialEq, Clone, Deserialize, Serialize)]
 pub enum RequestStatus {
     Pending,
-    Finalized(Outcome)
+    Finalized(Outcome),
 }
 
 /// An entry in the Requester Registry
@@ -31,6 +27,6 @@ pub enum RequestStatus {
 pub struct Requester {
     pub contract_name: String,
     pub account_id: AccountId,
-    pub stake_multiplier: Option<u16>, 
-    pub code_base_url: Option<String>
+    pub stake_multiplier: Option<u16>,
+    pub code_base_url: Option<String>,
 }

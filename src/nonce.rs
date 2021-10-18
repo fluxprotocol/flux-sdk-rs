@@ -1,4 +1,4 @@
-use near_sdk::borsh::{ self, BorshDeserialize, BorshSerialize };
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 
 #[derive(BorshSerialize, BorshDeserialize)]
 pub struct Nonce(u64);
