@@ -15,7 +15,9 @@ pub struct DataRequestDetails {
     pub amount: WrappedBalance,
     pub payload: NewDataRequestArgs,
     pub tags: Vec<String>,
-    pub status: RequestStatus
+    pub status: RequestStatus,
+    pub creator: AccountId,
+    pub has_withdrawn_validity_bond: bool,
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Debug, PartialEq, Clone, Deserialize, Serialize)]
