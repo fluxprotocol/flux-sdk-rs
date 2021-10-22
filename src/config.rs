@@ -2,9 +2,21 @@ use near_sdk::{
     borsh::{ self, BorshDeserialize, BorshSerialize },
     serde::{ Serialize, Deserialize },
     json_types::U128,
-    AccountId
+    AccountId,
+    BorshStorageKey
 };
 use crate::types::WrappedTimestamp;
+
+/// Storage keys for persistent collections on the Flux Oracle contract
+#[derive(BorshSerialize, BorshStorageKey)]
+pub enum OracleStorageKey {
+    Accounts,
+    Configs,
+    DataRequests,
+    OutcomeToStake,
+    UserToOutcomeToStake,
+    Whitelist
+}
 
 /// Used on oracle to store global configuration
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
