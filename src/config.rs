@@ -13,8 +13,6 @@ pub enum OracleStorageKey {
     Accounts,
     Configs,
     DataRequests,
-    OutcomeToStake,
-    UserToOutcomeToStake,
     Whitelist
 }
 
