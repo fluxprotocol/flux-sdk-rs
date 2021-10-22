@@ -21,4 +21,3 @@ pub use resolution_window::*;
 
 pub mod config;
 pub use config::*;
-

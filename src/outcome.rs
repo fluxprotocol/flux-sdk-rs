@@ -1,19 +1,19 @@
 use near_sdk::{
-    serde::{ Deserialize, Serialize },
-    borsh::{ self, BorshDeserialize, BorshSerialize },
-    json_types::U128
+    borsh::{self, BorshDeserialize, BorshSerialize},
+    json_types::U128,
+    serde::{Deserialize, Serialize},
 };
 
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Debug, PartialEq, Clone)]
 pub enum Outcome {
     Answer(AnswerType),
-    Invalid
+    Invalid,
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Debug, PartialEq, Clone)]
 pub enum AnswerType {
     Number(AnswerNumberType),
-    String(String)
+    String(String),
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Debug, PartialEq, Clone)]

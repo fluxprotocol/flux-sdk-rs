@@ -1,11 +1,11 @@
-use near_sdk::{
-    borsh::{ self, BorshDeserialize, BorshSerialize },
-    serde::{ Serialize, Deserialize },
-    json_types::U128,
-    AccountId,
-    BorshStorageKey
-};
 use crate::types::WrappedTimestamp;
+use near_sdk::{
+    borsh::{self, BorshDeserialize, BorshSerialize},
+    json_types::U128,
+    serde::{Deserialize, Serialize},
+    AccountId,
+    BorshStorageKey,
+};
 
 /// Storage keys for persistent collections on the Flux Oracle contract
 #[derive(BorshSerialize, BorshStorageKey)]
