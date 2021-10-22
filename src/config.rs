@@ -4,7 +4,19 @@ use near_sdk::{
     json_types::U128,
     serde::{Deserialize, Serialize},
     AccountId,
+    BorshStorageKey,
 };
+
+/// Storage keys for persistent collections on the Flux Oracle contract
+#[derive(BorshSerialize, BorshStorageKey)]
+pub enum OracleStorageKey {
+    Accounts,
+    Configs,
+    DataRequests,
+    OutcomeToStake,
+    UserToOutcomeToStake,
+    Whitelist
+}
 
 /// Used on oracle to store global configuration
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
