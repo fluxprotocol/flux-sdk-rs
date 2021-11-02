@@ -21,6 +21,7 @@ pub struct NewDataRequestArgs {
     pub outcomes: Option<Vec<String>>,
     pub challenge_period: WrappedTimestamp,
     pub data_type: DataRequestDataType,
+    pub request_type: DataRequestType
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Clone)]
@@ -33,6 +34,13 @@ pub struct Source {
 pub enum DataRequestDataType {
     Number(U128),
     String,
+}
+
+#[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Debug, PartialEq, Clone)]
+pub enum DataRequestType {
+    CrowdSourced,
+    Provider,
+    Fetch
 }
 
 /// The arguments sent in `msg` on `ft_transfer_call()` from Requester to oracle while staking on a data request
@@ -69,6 +77,7 @@ pub struct ActiveDataRequest {
     pub final_arbitrator_triggered: bool,
     pub tags: Vec<String>,
     pub data_type: DataRequestDataType,
+    pub data_request_type: DataRequestType
 }
 
 #[derive(BorshSerialize, BorshDeserialize)]
@@ -121,6 +130,7 @@ pub struct ActiveDataRequestSummary {
     pub final_arbitrator_triggered: bool,
     pub tags: Vec<String>,
     pub data_type: DataRequestDataType,
+    pub data_request_type: DataRequestType
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
