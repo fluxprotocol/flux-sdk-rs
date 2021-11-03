@@ -15,13 +15,30 @@ use near_sdk::{
 /// The arguments sent in `msg` on `ft_transfer_call()` from Requester to oracle while creating a new data request
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
 pub struct NewDataRequestArgs {
-    pub sources: Option<Vec<Source>>,
     pub tags: Vec<String>,
     pub description: Option<String>,
-    pub outcomes: Option<Vec<String>>,
+    pub data_type: DataRequestDataType,
+}
+
+#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
+pub struct NewFetchRequestArgs {
+    pub sources: Option<Vec<Source>>,
+    pub dr_args: NewDataRequestArgs,
     pub challenge_period: WrappedTimestamp,
     pub data_type: DataRequestDataType,
-    pub request_type: DataRequestType
+}
+
+#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
+pub struct NewCrowdSourcedRequestArgs {
+    pub outcomes: Option<Vec<String>>,
+    pub dr_args: NewDataRequestArgs,
+    pub challenge_period: WrappedTimestamp
+}
+
+#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
+pub struct NewProviderRequestArgs {
+    pub resolver: AccountId,
+    pub dr_args: NewDataRequestArgs,
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Clone)]
@@ -34,13 +51,6 @@ pub struct Source {
 pub enum DataRequestDataType {
     Number(U128),
     String,
-}
-
-#[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Debug, PartialEq, Clone)]
-pub enum DataRequestType {
-    CrowdSourced,
-    Provider,
-    Fetch
 }
 
 /// The arguments sent in `msg` on `ft_transfer_call()` from Requester to oracle while staking on a data request
@@ -62,9 +72,34 @@ pub enum DataRequest {
     Finalized(FinalizedDataRequest),
 }
 
+#[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Debug, PartialEq)]
+enum Active {
+    CrowdSourced,
+    Provider,
+    Fetch
+}
+
+#[derive(BorshSerialize, BorshDeserialize)]
+pub enum ActiveDataRequest {
+    FetchDataRequest,
+    CrowdSourceRequest,
+    ProviderRequest
+}
+
+#[derive(BorshSerialize, BorshDeserialize)] 
+pub struct DisputableDataRequestBase {
+    
+}
+
+#[derive(BorshSerialize, BorshDeserialize)] 
+pub struct ProviderDataRequest {
+    pub id: u64,
+    pub outcome: Outcome
+}
+
 /// Used in the oracle to store all information associated with a data request
 #[derive(BorshSerialize, BorshDeserialize)]
-pub struct ActiveDataRequest {
+pub struct DataRequestBase {
     pub id: u64,
     pub description: Option<String>,
     pub sources: Vec<Source>,
@@ -76,8 +111,15 @@ pub struct ActiveDataRequest {
     pub initial_challenge_period: Duration, // challenge period for first resolution
     pub final_arbitrator_triggered: bool,
     pub tags: Vec<String>,
-    pub data_type: DataRequestDataType,
-    pub data_request_type: DataRequestType
+    pub data_type: DataRequestDataType 
+}
+
+#[derive(BorshSerialize, BorshDeserialize)]
+pub struct FetchDataRequest {
+    pub base_data: DataRequestBase,
+    pub sources: Vec<Source>,
+
+
 }
 
 #[derive(BorshSerialize, BorshDeserialize)]
@@ -130,7 +172,6 @@ pub struct ActiveDataRequestSummary {
     pub final_arbitrator_triggered: bool,
     pub tags: Vec<String>,
     pub data_type: DataRequestDataType,
-    pub data_request_type: DataRequestType
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
