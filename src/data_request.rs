@@ -21,6 +21,7 @@ pub struct NewDataRequestArgs {
     pub outcomes: Option<Vec<String>>,
     pub challenge_period: WrappedTimestamp,
     pub data_type: DataRequestDataType,
+    pub is_provider: bool,
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Clone)]
