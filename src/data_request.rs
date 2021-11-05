@@ -69,7 +69,7 @@ pub struct ActiveDataRequest {
     pub final_arbitrator_triggered: bool,
     pub tags: Vec<String>,
     pub data_type: DataRequestDataType,
-    pub provider: AccountId,
+    pub provider: Option<AccountId>,
 }
 
 #[derive(BorshSerialize, BorshDeserialize)]
