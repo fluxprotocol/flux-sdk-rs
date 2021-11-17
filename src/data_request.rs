@@ -12,6 +12,13 @@ use near_sdk::{
     AccountId, Balance,
 };
 
+#[derive(PartialEq)]
+pub enum DataRequestType {
+    ValidatorFetch,
+    ProviderFetch,
+    ProviderPush
+}
+
 /// The arguments sent in `msg` on `ft_transfer_call()` from Requester to oracle while creating a new data request
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
 pub struct NewDataRequestArgs {
