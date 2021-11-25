@@ -90,6 +90,7 @@ pub struct DataRequestConfig {
     pub validity_bond: Balance,
     pub paid_fee: Balance,
     pub stake_multiplier: Option<u16>,
+    pub min_resolution_bond: Balance,
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
