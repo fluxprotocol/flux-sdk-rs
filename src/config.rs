@@ -29,6 +29,7 @@ pub struct OracleConfig {
     pub min_initial_challenge_window_duration: WrappedTimestamp,
     pub final_arbitrator_invoke_amount: U128, // Amount of tokens that, when bonded in a single `ResolutionWindow`, should trigger the final arbitrator
     pub fee: FeeConfig,
+    pub min_resolution_bond: U128,
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
