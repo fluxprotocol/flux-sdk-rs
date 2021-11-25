@@ -131,4 +131,6 @@ pub struct DataRequestConfigSummary {
     pub validity_bond: WrappedBalance,
     pub paid_fee: WrappedBalance,
     pub stake_multiplier: Option<u16>,
+    pub min_resolution_bond: WrappedBalance,
+
 }
