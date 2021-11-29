@@ -21,6 +21,7 @@ pub struct NewDataRequestArgs {
     pub outcomes: Option<Vec<String>>,
     pub challenge_period: WrappedTimestamp,
     pub data_type: DataRequestDataType,
+    pub provider: Option<AccountId>,
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Clone)]
@@ -89,6 +90,7 @@ pub struct DataRequestConfig {
     pub validity_bond: Balance,
     pub paid_fee: Balance,
     pub stake_multiplier: Option<u16>,
+    pub min_resolution_bond: Balance,
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
@@ -129,4 +131,6 @@ pub struct DataRequestConfigSummary {
     pub validity_bond: WrappedBalance,
     pub paid_fee: WrappedBalance,
     pub stake_multiplier: Option<u16>,
+    pub min_resolution_bond: WrappedBalance,
+
 }
