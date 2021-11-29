@@ -124,6 +124,7 @@ pub struct ActiveDataRequestSummary {
     pub final_arbitrator_triggered: bool,
     pub tags: Vec<String>,
     pub data_type: DataRequestDataType,
+    pub min_resolution_bond: U128,
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
