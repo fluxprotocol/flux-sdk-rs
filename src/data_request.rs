@@ -28,9 +28,9 @@ pub struct NewDataRequestArgs {
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Clone)]
 pub struct Source {
     pub end_point: String,
-    pub multiplier: Option<String>,
+    pub multiplier: Option<String>, // To normalize all values to same decimal cope
     pub source_path: String,
-    pub http_instructions: Option<HTTPMethods>,
+    pub http_instructions: Option<HTTPMethods>, // If `None` is a GET request
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Debug, Clone)]
