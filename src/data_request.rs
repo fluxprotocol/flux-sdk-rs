@@ -22,6 +22,7 @@ pub struct NewDataRequestArgs {
     pub challenge_period: WrappedTimestamp,
     pub data_type: DataRequestDataType,
     pub provider: Option<AccountId>,
+    pub post_body: Option<String>, // if `Some` validators expect to make a POST requests, should be stringified JSON, don't support XML or other formats at this point. If `None` expects GET request
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Clone)]
@@ -71,6 +72,7 @@ pub struct ActiveDataRequest {
     pub tags: Vec<String>,
     pub data_type: DataRequestDataType,
     pub provider: Option<AccountId>, // For first party data_requests, expects to be immediately resolved with tags[0]
+    pub post_body: Option<String>, // if `Some` validators expect to make a POST requests, should be stringified JSON, don't support XML or other formats at this point. If `None` expects GET request
 }
 
 #[derive(BorshSerialize, BorshDeserialize)]
@@ -124,6 +126,7 @@ pub struct ActiveDataRequestSummary {
     pub final_arbitrator_triggered: bool,
     pub tags: Vec<String>,
     pub data_type: DataRequestDataType,
+    pub post_body: Option<String>, // if `Some` validators expect to make a POST requests, should be stringified JSON, don't support XML or other formats at this point. If `None` expects GET request
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
