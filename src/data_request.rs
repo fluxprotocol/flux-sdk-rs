@@ -35,9 +35,14 @@ pub struct Source {
 
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Debug, Clone)]
 pub enum HTTPMethods {
+    Get(HTTPAttributes),
+    Head(HTTPAttributes),
     Post(HTTPAttributes),
     Put(HTTPAttributes),
     Delete(HTTPAttributes),
+    Connect(HTTPAttributes),
+    Options(HTTPAttributes),
+    Trace(HTTPAttributes),
     Patch(HTTPAttributes),
 }
 
