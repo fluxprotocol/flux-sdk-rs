@@ -48,8 +48,8 @@ pub enum HTTPMethods {
 
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Debug, Clone)]
 pub struct HTTPAttributes {
-    http_headers: HashMap<String, String>,
-    http_body: Option<String>,
+    pub http_headers: HashMap<String, String>,
+    pub http_body: Option<String>,
 }
 
 #[derive(BorshSerialize, BorshDeserialize, Deserialize, Serialize, Debug, PartialEq, Clone)]
