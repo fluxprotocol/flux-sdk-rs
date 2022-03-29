@@ -1,6 +1,6 @@
 [package]
 name = "flux-sdk"
-version = "0.2.5"
+version = "0.3.0"
 authors = ["Flux Contributors <contributors@flux.xyz>"]
 edition = "2018"
 
@@ -8,5 +8,5 @@ edition = "2018"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-near-sdk = "3.1.0"
+near-sdk = "4.0.0-pre.7"
 serde = "1.0.118"
